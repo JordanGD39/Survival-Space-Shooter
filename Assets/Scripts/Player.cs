@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         invincibleTimer += Time.deltaTime;
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + timer.ToString("F2");
-        if (health <= 0f || Input.GetKey(KeyCode.Y))
+        if (health <= 0f)
         {
             Die();
         }

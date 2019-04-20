@@ -78,7 +78,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (health <= 0f || Input.GetKey(KeyCode.Y))
+        if (health <= 0f)
         {
             Die();
         }
