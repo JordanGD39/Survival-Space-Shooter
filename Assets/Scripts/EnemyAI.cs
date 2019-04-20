@@ -17,14 +17,15 @@ public class EnemyAI : MonoBehaviour
 
     private Rigidbody rb;
 
-    public float speed;
-    public float forwardSpeed;
-    public float timer;
+    public float speed = 10f;
+    public float forwardSpeed = 5f;
+    public float timer = 0f;
     public float health = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
         spawner = GameObject.FindGameObjectWithTag("Spawner");
         spawnerScript = spawner.GetComponent<Spawner>();
@@ -36,7 +37,6 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = (transform.position - player.transform.position).magnitude;
 
         if (player.transform.position.x > transform.position.x)
         {
@@ -62,17 +62,10 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            if (transform.position.z < 35)
-            { 
-                forwardSpeed = -2;
-            }
+            forwardSpeed = 2.5f;
             if (transform.position.x > -25 && transform.position.x < 35)
             {
                 speed = -10;
-            }
-            if (transform.position.z >= 35)
-            {
-                forwardSpeed = 5;
             }
             if (transform.position.x >= 35)
             {

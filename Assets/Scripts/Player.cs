@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         anim.SetBool("invincible", invincible);
-        if (dead)
+        if (!dead)
         {
             timer += Time.deltaTime;
         }

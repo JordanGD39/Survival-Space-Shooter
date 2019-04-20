@@ -20,14 +20,14 @@ public class EnemyColliders : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "PlayerLaser")
+        if (col.gameObject.CompareTag("PlayerLaser"))
         {
             enemyScript.health -= 10;
             playerScript.score += 5;
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.CompareTag("PlayerCol"))
         {
             enemyScript.health -= 20;
             playerScript.Damage(50);
