@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject explosionGO;
     public GameObject spawner;
 
+    public AudioSource laser;
+
     public EnemyExplosion explosionScript;
     public Player playerScript;
     public Spawner spawnerScript;
@@ -56,6 +58,7 @@ public class EnemyAI : MonoBehaviour
             forwardSpeed = 5;
             if (timer > 0.8f)
             {
+                laser.Play();
                 Instantiate(shot, shotSpawn.position, shotSpawn.localRotation);
                 timer = 0;
             }

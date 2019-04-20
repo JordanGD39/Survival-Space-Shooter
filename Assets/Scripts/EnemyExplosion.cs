@@ -7,6 +7,7 @@ public class EnemyExplosion : MonoBehaviour
     public SphereCollider sphereCollider;
 
     public Animator anim;
+    public AudioSource destroyed;
 
     public GameObject spawner;
     public GameObject enemy;
@@ -16,6 +17,7 @@ public class EnemyExplosion : MonoBehaviour
     public Spawner spawnerScript;
 
     public bool explode = false;
+    public bool done = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,11 @@ public class EnemyExplosion : MonoBehaviour
     {
         if (explode)
         {
+            if (!done)
+            {
+                destroyed.Play();
+                done = true;
+            }
             anim.SetTrigger("Explosion");
             StartCoroutine("ExplosionFunction");
         }

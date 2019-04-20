@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Boundary boundary;
 
+    public AudioSource laser;
+
     public GameObject shot;
     public Transform shotSpawn;
     public float fireRate;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1") && timer > nextFire)
         {
             nextFire = timer + fireRate;
+            laser.Play();
             Instantiate(shot, shotSpawn.position, shotSpawn.localRotation);
         }
     }

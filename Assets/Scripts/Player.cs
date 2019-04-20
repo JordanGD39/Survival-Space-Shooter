@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public Text timerText;
     public Image healthBar;
 
+    public AudioSource damaged;
+
     public float health = 100f;
     public float timer = 0;
     public float runTimer = 0;
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
 
     public int score = 0;
     private bool dead = false;
+    private bool done = false;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +86,15 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (health <= 10)
+        {
+            if (!done)
+            {
+                damaged.Play();
+                done = true;
+            }
+        }
+
         float calcHealth = health / 100;
         healthBar.transform.localScale = new Vector3(Mathf.Clamp(calcHealth, 0, 1), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
@@ -99,6 +111,7 @@ public class Player : MonoBehaviour
 
     void Die()
     {
+        damaged.Stop();
         explosionScript.explode = true;
         Destroy(gameObject.GetComponent<PlayerController>());
         dead = true;

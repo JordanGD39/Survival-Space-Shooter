@@ -8,8 +8,10 @@ public class Explosion : MonoBehaviour
     public SphereCollider sphereCollider;
     public Animator anim;
     public GameObject player;
+    public AudioSource destroyed;
 
     public bool explode = false;
+    public bool done = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,11 @@ public class Explosion : MonoBehaviour
     {
         if (explode)
         {
+            if (!done)
+            {
+                destroyed.Play();
+                done = true;
+            }
             anim.SetTrigger("Explosion");
             StartCoroutine("ExplosionFunction");
         }
